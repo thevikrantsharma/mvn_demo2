@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class Form1 extends JFrame implements ActionListener
 {
-	JButton submitBt;
+	JButton submitBt, cancelBt;
 	JTextField nameTf, rollnoTf, stateTf;
 	JLabel nameLb, rollnoLb,stateLb;
 	Connection con;
@@ -44,6 +44,9 @@ public class Form1 extends JFrame implements ActionListener
 		
 		submitBt=new JButton("submit");
 		submitBt.addActionListener(this);
+		
+		cancelBt=new JButton("Cancel");
+		cancelBt.addActionListener(this);
 		setLayout(null);
 		//setLayout(new FlowLayout());
 		nameLb.setBounds(10,10, 50, 20);
@@ -60,6 +63,8 @@ public class Form1 extends JFrame implements ActionListener
 		add(stateTf);
 		submitBt.setBounds(10,100,100,20);
 		add(submitBt);
+		cancelBt.setBounds(120,100,100,20);
+		add(cancelBt);
 		
 		
 	}
@@ -82,6 +87,12 @@ public class Form1 extends JFrame implements ActionListener
 				smt.executeUpdate(query);
 			}
 			catch(Exception e1) {System .out.println(e1);}
+		}
+		
+		if(e.getSource()==cancelBt)
+		{
+			System.out.println("cancel button pressed");
+			System.exit(0);
 		}
 	}
 
